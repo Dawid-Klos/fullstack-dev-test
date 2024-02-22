@@ -37,3 +37,31 @@ describe("isPrime", () => {
     expect(isPrime(28)).toBe(false);
   });
 });
+
+describe("findPrimeNumbersTo", () => {
+  it("should return prime numbers up to x", () => {
+    expect(findPrimeNumbersTo(2)).toEqual([2]);
+    expect(findPrimeNumbersTo(3)).toEqual([2, 3]);
+    expect(findPrimeNumbersTo(4)).toEqual([2, 3]);
+    expect(findPrimeNumbersTo(5)).toEqual([2, 3, 5]);
+    expect(findPrimeNumbersTo(6)).toEqual([2, 3, 5]);
+    expect(findPrimeNumbersTo(7)).toEqual([2, 3, 5, 7]);
+    expect(findPrimeNumbersTo(8)).toEqual([2, 3, 5, 7]);
+    expect(findPrimeNumbersTo(9)).toEqual([2, 3, 5, 7]);
+    expect(findPrimeNumbersTo(10)).toEqual([2, 3, 5, 7]);
+    expect(findPrimeNumbersTo(11)).toEqual([2, 3, 5, 7, 11]);
+    expect(findPrimeNumbersTo(20)).toEqual([2, 3, 5, 7, 11, 13, 17, 19]);
+    expect(findPrimeNumbersTo(30)).toEqual([
+      2, 3, 5, 7, 11, 13, 17, 19, 23, 29,
+    ]);
+    expect(findPrimeNumbersTo(40)).toEqual([
+      2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,
+    ]);
+  });
+
+  it("should return an empty array for x < 2", () => {
+    expect(findPrimeNumbersTo(1)).toEqual([]);
+    expect(findPrimeNumbersTo(0)).toEqual([]);
+    expect(findPrimeNumbersTo(-1)).toEqual([]);
+  });
+});
