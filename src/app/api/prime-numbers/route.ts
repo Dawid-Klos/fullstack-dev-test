@@ -27,10 +27,10 @@ export async function GET(request: NextRequest) {
       {
         message: "Invalid value",
         error: "The smallest prime number is 2",
-        statusCode: 400,
+        statusCode: 422,
         data: [],
       },
-      { status: 400 }
+      { status: 422 }
     );
   }
 
