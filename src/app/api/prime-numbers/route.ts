@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+import { findPrimeNumbersTo } from "utils/prime-numbers";
+
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
 
@@ -32,8 +34,15 @@ export async function GET(request: NextRequest) {
     );
   }
 
+  const primeNumbers = findPrimeNumbersTo(x);
+
   return NextResponse.json(
-    { message: "Success", error: "", statusCode: 200, data: [x] },
+    {
+      message: "Successfully found prime numbers to the given value",
+      error: "",
+      statusCode: 200,
+      data: primeNumbers,
+    },
     { status: 200 }
   );
 }
