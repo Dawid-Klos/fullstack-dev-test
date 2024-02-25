@@ -145,7 +145,7 @@ describe("GET /api/prime-numbers - test error messages", () => {
 
     const jsonResponse = await res.json();
 
-    expect(jsonResponse.error).toEqual("Expected numerical value not a string");
+    expect(jsonResponse.error).toEqual("Expected numerical value");
   });
 
   it("should return error if value is a number with decimal places", async () => {
@@ -163,7 +163,7 @@ describe("GET /api/prime-numbers - test error messages", () => {
 
     const jsonResponse = await res.json();
 
-    expect(jsonResponse.error).toEqual("Expected numerical value not a string");
+    expect(jsonResponse.error).toEqual("Expected numerical value");
   });
 
   it("should return error if value is empty", async () => {
