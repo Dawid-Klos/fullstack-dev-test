@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import { findPrimeNumbersTo } from "utils/prime-numbers";
+import { findPrimeNumbersTo } from "utils/primeNumbers";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;

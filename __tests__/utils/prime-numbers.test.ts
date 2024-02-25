@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 
-import { isPrime, findPrimeNumbersTo } from "utils/prime-numbers";
+import { isPrime, findPrimeNumbersTo } from "utils/primeNumbers";
 
 describe("isPrime", () => {
   it("should return true for prime numbers", () => {
