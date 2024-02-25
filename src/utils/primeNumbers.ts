@@ -6,12 +6,23 @@ export const isPrime = (num: number) => {
   return true;
 };
 
-export const findPrimeNumbersTo = (x: number) => {
+export const findPrimeNumbersTo = (
+  x: number,
+  limit: number = 10,
+  offset: number = 0
+) => {
   let primeNumbers = [];
 
-  for (let i = 1; i <= x; i++) {
-    if (isPrime(i)) {
-      primeNumbers.push(i);
+  for (let i = 2 + offset; i <= x; i++) {
+    // no prime number is even except 2
+    if (i !== 2 && i % 2 === 0) {
+      continue;
+    }
+
+    isPrime(i) && primeNumbers.push(i);
+
+    if (primeNumbers.length === limit) {
+      break;
     }
   }
 
