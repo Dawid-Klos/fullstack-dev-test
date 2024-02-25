@@ -28,3 +28,18 @@ export const findPrimeNumbersTo = (
 
   return primeNumbers;
 };
+
+export const countPrimeNumbersTo = (x: number) => {
+  let count = 0;
+
+  for (let i = 2; i <= x; i++) {
+    // no prime number is even except 2
+    if (i !== 2 && i % 2 === 0) {
+      continue;
+    }
+
+    isPrime(i) && count++;
+  }
+
+  return count;
+};
