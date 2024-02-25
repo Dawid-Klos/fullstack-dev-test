@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 import { withValidation } from "./middleware";
 
-import { findPrimeNumbersTo } from "utils/primeNumbers";
+import { findPrimeNumbersTo, countPrimeNumbersTo } from "utils/primeNumbers";
 
 export const GET = withValidation(async (request: NextRequest) => {
   const searchParams = request.nextUrl.searchParams;
@@ -15,6 +15,7 @@ export const GET = withValidation(async (request: NextRequest) => {
   const offset = (page - 1) * limit;
 
   const primeNumbers = findPrimeNumbersTo(value, limit, offset);
+  const total = countPrimeNumbersTo(value);
 
   return NextResponse.json(
     {
@@ -22,6 +23,14 @@ export const GET = withValidation(async (request: NextRequest) => {
       error: "",
       statusCode: 200,
       data: primeNumbers,
+      pagination: {
+        totalItems: total,
+        limit: limit,
+        current_page: page,
+        total_pages: Math.ceil(total / limit),
+        next_page: page * limit < total ? page + 1 : null,
+        prev_page: page > 1 ? page - 1 : null,
+      },
     },
     { status: 200 }
   );
