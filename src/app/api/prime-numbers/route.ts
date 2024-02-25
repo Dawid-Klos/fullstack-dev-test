@@ -6,15 +6,39 @@ import { findPrimeNumbersTo } from "utils/prime-numbers";
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
 
-  const x: number = parseInt(searchParams.get("value") || "0");
+  if (!searchParams.has("value") || searchParams.get("value") === "") {
+    return NextResponse.json(
+      {
+        message: "Bad request",
+        error: "Expected a value, but none was provided",
+        statusCode: 400,
+        data: [],
+      },
+      { status: 400 }
+    );
+  }
+
+  const x: number = Number(searchParams.get("value"));
 
   if (isNaN(x)) {
     const xType = typeof searchParams.get("value");
 
     return NextResponse.json(
       {
-        message: "Invalid value",
+        message: "Bad request",
         error: `Expected numerical value not a ${xType}`,
+        statusCode: 400,
+        data: [],
+      },
+      { status: 400 }
+    );
+  }
+
+  if (!Number.isInteger(x)) {
+    return NextResponse.json(
+      {
+        message: "Bad request",
+        error: `Expected an integer not a float`,
         statusCode: 400,
         data: [],
       },

@@ -9,6 +9,10 @@ const config: Config = {
   collectCoverage: true,
   coverageDirectory: "coverage",
   coverageProvider: "v8",
+  moduleNameMapper: {
+    "^app/(.*)$": "<rootDir>/src/app/$1",
+    "^utils/(.*)$": "<rootDir>/src/utils/$1",
+  },
 };
 
 export default createJestConfig(config);
