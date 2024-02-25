@@ -1,42 +1,20 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+import { withValidation } from "./middleware";
+
 import { findPrimeNumbersTo } from "utils/primeNumbers";
-import { handleError } from "utils/errorHandler";
 
-export async function GET(request: NextRequest) {
+export const GET = withValidation(async (request: NextRequest) => {
   const searchParams = request.nextUrl.searchParams;
-  const value = searchParams.get("value");
 
-  if (!value || value === "") {
-    return handleError(
-      "Bad request",
-      "Expected a value, but none was provided",
-      400
-    );
-  }
+  const value = Number(searchParams.get("value"));
+  const page = Number(searchParams.get("page")) || 1;
+  const limit = Number(searchParams.get("limit")) || 10;
 
-  const x: number = Number(value);
+  const offset = (page - 1) * limit;
 
-  switch (true) {
-    case isNaN(x):
-      const xType = typeof value;
-      return handleError(
-        "Bad request",
-        `Expected numerical value not a ${xType}`,
-        400
-      );
-    case !Number.isInteger(x):
-      return handleError("Bad request", `Expected an integer not a float`, 400);
-    case x < 2:
-      return handleError(
-        "Invalid value",
-        "The smallest prime number is 2",
-        422
-      );
-  }
-
-  const primeNumbers = findPrimeNumbersTo(x);
+  const primeNumbers = findPrimeNumbersTo(value, limit, offset);
 
   return NextResponse.json(
     {
@@ -47,4 +25,4 @@ export async function GET(request: NextRequest) {
     },
     { status: 200 }
   );
-}
+});
