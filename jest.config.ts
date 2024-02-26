@@ -12,6 +12,7 @@ const config: Config = {
   moduleNameMapper: {
     "^app/(.*)$": "<rootDir>/src/app/$1",
     "^utils/(.*)$": "<rootDir>/src/utils/$1",
+    "^src/(.*)$": "<rootDir>/src/$1",
   },
 };
 
