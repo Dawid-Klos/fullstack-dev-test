@@ -138,3 +138,22 @@ describe("findPrimeNumbersTo with limit and offset", () => {
     expect(findPrimeNumbersTo(-1, 1, 1)).toEqual([]);
   });
 });
+
+describe("countPrimeNumbersTo", () => {
+  it("should return the number of prime numbers up to x", () => {
+    expect(countPrimeNumbersTo(2)).toEqual(1);
+    expect(countPrimeNumbersTo(3)).toEqual(2);
+    expect(countPrimeNumbersTo(5)).toEqual(3);
+    expect(countPrimeNumbersTo(7)).toEqual(4);
+    expect(countPrimeNumbersTo(11)).toEqual(5);
+    expect(countPrimeNumbersTo(20)).toEqual(8);
+    expect(countPrimeNumbersTo(30)).toEqual(10);
+    expect(countPrimeNumbersTo(120)).toEqual(30);
+  });
+
+  it("should return 0 for x < 2", () => {
+    expect(countPrimeNumbersTo(1)).toEqual(0);
+    expect(countPrimeNumbersTo(0)).toEqual(0);
+    expect(countPrimeNumbersTo(-1)).toEqual(0);
+  });
+});
