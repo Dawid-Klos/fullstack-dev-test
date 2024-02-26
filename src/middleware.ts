@@ -1,7 +1,12 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-import { validateInput } from "utils/inputValidator";
+import {
+  isValidNumber,
+  isLimitInRange,
+  isPageInRange,
+} from "utils/inputValidator";
+import { countPrimeNumbersTo } from "utils/primeNumbers";
 
 export default function validationMiddleware(request: NextRequest) {
   const searchParams: URLSearchParams = request.nextUrl.searchParams;
@@ -26,14 +31,25 @@ export default function validationMiddleware(request: NextRequest) {
 
   const x: number = Number(value);
 
-  const validationErrors = [
-    validateInput(x, 2, "The smallest prime number is 2"),
-    validateInput(page, 1, "Page number must be greater than 0"),
-    validateInput(limit, 10, "The minimum limit is 10"),
+  const invalidNumberErrors = [
+    isValidNumber(x),
+    isValidNumber(page),
+    isValidNumber(limit),
   ].filter(Boolean);
 
-  if (validationErrors.length) {
-    return validationErrors[0];
+  if (invalidNumberErrors.length) {
+    return invalidNumberErrors[0];
+  }
+
+  const totalPages = Math.ceil(countPrimeNumbersTo(x) / limit);
+
+  const invalidRangeErrors = [
+    isLimitInRange(limit),
+    isPageInRange(page, totalPages),
+  ].filter(Boolean);
+
+  if (invalidRangeErrors.length) {
+    return invalidRangeErrors[0];
   }
 }
 
