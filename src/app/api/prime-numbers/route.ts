@@ -1,11 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import { withValidation } from "./middleware";
-
 import { findPrimeNumbersTo, countPrimeNumbersTo } from "utils/primeNumbers";
 
-export const GET = withValidation(async (request: NextRequest) => {
+export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
 
   const value = Number(searchParams.get("value"));
@@ -34,4 +32,4 @@ export const GET = withValidation(async (request: NextRequest) => {
     },
     { status: 200 }
   );
-});
+}
