@@ -1,71 +1,34 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import { findPrimeNumbersTo } from "utils/prime-numbers";
+import { findPrimeNumbersTo, countPrimeNumbersTo } from "utils/primeNumbers";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
 
-  if (!searchParams.has("value") || searchParams.get("value") === "") {
-    return NextResponse.json(
-      {
-        message: "Bad request",
-        error: "Expected a value, but none was provided",
-        statusCode: 400,
-        data: [],
-      },
-      { status: 400 }
-    );
-  }
+  const value = Number(searchParams.get("value"));
+  const page = Number(searchParams.get("page")) || 1;
+  const limit = Number(searchParams.get("limit")) || 10;
 
-  const x: number = Number(searchParams.get("value"));
+  const offset = (page - 1) * limit;
 
-  if (isNaN(x)) {
-    const xType = typeof searchParams.get("value");
-
-    return NextResponse.json(
-      {
-        message: "Bad request",
-        error: `Expected numerical value not a ${xType}`,
-        statusCode: 400,
-        data: [],
-      },
-      { status: 400 }
-    );
-  }
-
-  if (!Number.isInteger(x)) {
-    return NextResponse.json(
-      {
-        message: "Bad request",
-        error: `Expected an integer not a float`,
-        statusCode: 400,
-        data: [],
-      },
-      { status: 400 }
-    );
-  }
-
-  if (x < 2) {
-    return NextResponse.json(
-      {
-        message: "Invalid value",
-        error: "The smallest prime number is 2",
-        statusCode: 422,
-        data: [],
-      },
-      { status: 422 }
-    );
-  }
-
-  const primeNumbers = findPrimeNumbersTo(x);
+  const primeNumbers = findPrimeNumbersTo(value, limit, offset);
+  const total = countPrimeNumbersTo(value);
 
   return NextResponse.json(
     {
       message: "Successfully found prime numbers to the given value",
       error: "",
-      statusCode: 200,
+      status_code: 200,
       data: primeNumbers,
+      pagination: {
+        total_items: total,
+        limit: limit,
+        current_page: page,
+        total_pages: Math.ceil(total / limit),
+        next_page: page * limit < total ? page + 1 : null,
+        prev_page: page > 1 ? page - 1 : null,
+      },
     },
     { status: 200 }
   );
