@@ -19,10 +19,10 @@ export async function GET(request: NextRequest) {
     {
       message: "Successfully found prime numbers to the given value",
       error: "",
-      statusCode: 200,
+      status_code: 200,
       data: primeNumbers,
       pagination: {
-        totalItems: total,
+        total_items: total,
         limit: limit,
         current_page: page,
         total_pages: Math.ceil(total / limit),
