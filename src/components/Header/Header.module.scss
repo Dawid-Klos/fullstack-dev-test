@@ -1,0 +1,42 @@
+@import "styles/variables";
+
+.header {
+  display: flex;
+  padding: 1rem;
+
+  @include screen_md {
+    padding: 2rem;
+  }
+
+  @include screen_lg {
+    padding-inline: 6rem;
+  }
+
+  @include screen_xl {
+    padding-inline: 12rem;
+  }
+
+  .title {
+    @include headline-small;
+
+    color: $primary-50;
+
+    @include screen_md {
+      @include headline-medium;
+    }
+
+    @include screen_xl {
+      @include headline-large;
+    }
+
+    & > span {
+      @include body-extra-small;
+
+      color: $primary-300;
+
+      @include screen_md {
+        @include body-small;
+      }
+    }
+  }
+}
