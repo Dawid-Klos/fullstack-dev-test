@@ -1,0 +1,22 @@
+@import "styles/variables";
+
+.button {
+  @include label-small;
+
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  background-color: $primary-800;
+  color: $primary-50;
+  box-shadow: 0px 10px 36px 0px rgba(190, 166, 255, 0.15);
+  transition: background-color 0.3s ease;
+
+  @include screen_lg {
+    @include label-medium;
+  }
+
+  &:hover {
+    background-color: $primary-900;
+  }
+}
