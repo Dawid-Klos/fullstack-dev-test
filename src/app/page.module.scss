@@ -1,0 +1,74 @@
+@import "styles/variables";
+
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1;
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
+
+.hgroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  .subtitle {
+    color: $primary-100;
+  }
+
+  .title {
+    @include display-small;
+
+    color: $primary-50;
+
+    @include screen_md {
+      @include display-medium;
+    }
+
+    @include screen_xl {
+      @include display-large;
+    }
+
+    & > span {
+      @include label-small;
+
+      color: $primary-300;
+
+      @include screen_md {
+        @include label-medium;
+      }
+    }
+  }
+}
+
+.description {
+  text-align: center;
+  color: rgba($primary-100, 0.75);
+
+  @include screen_md {
+    max-width: 35rem;
+  }
+
+  @include screen_xl {
+    max-width: 45rem;
+  }
+}
+
+.bgBlurs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(32px);
+  border-radius: 1rem;
+  object-fit: contain;
+  object-position: 50% 25%;
+}
