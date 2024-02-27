@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Poppins } from "next/font/google";
-import "./globals.css";
+import "./globals.scss";
 
 const montserrat = Montserrat({
   weight: ["800", "900"],
