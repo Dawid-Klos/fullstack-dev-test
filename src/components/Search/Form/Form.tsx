@@ -1,12 +1,13 @@
 "use client";
 
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import Button from "components/ui/Button";
 import Input from "components/ui/Input";
 import Label from "components/ui/Label";
 
-import { PrimeNumbers } from "config/formSchema";
+import { PrimeNumbers, primeNumbersSchema } from "config/formSchema";
 
 import styles from "./Form.module.scss";
 
@@ -16,7 +17,9 @@ export const Form = () => {
     handleSubmit,
     getValues,
     formState: { errors },
-  } = useForm<PrimeNumbers>();
+  } = useForm<PrimeNumbers>({
+    resolver: yupResolver(primeNumbersSchema),
+  });
 
   const onSubmit: SubmitHandler<PrimeNumbers> = (data) => {
     console.log(data);
