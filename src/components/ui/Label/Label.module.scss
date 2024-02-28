@@ -1,0 +1,24 @@
+@import "styles/variables";
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  .name {
+    @include label-small;
+
+    color: $primary-50;
+    text-transform: uppercase;
+
+    @include screen_lg {
+      @include label-medium;
+    }
+  }
+
+  .description {
+    @include body-extra-small;
+
+    color: rgba($primary-50, 0.5);
+  }
+}
