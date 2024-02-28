@@ -1,0 +1,38 @@
+@import "styles/variables";
+
+.pagination {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  .page {
+    @include label-small;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include screen_md {
+      @include label-medium;
+    }
+  }
+
+  .button {
+    background-color: transparent;
+    box-shadow: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      background-color: transparent;
+      color: $primary-700;
+    }
+
+    &:disabled {
+      color: $background-400;
+    }
+  }
+}

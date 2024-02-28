@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import Image from "next/image";
 
 import SearchSection from "components/Search";
+import SearchResult from "components/SearchResult";
 
 import bgBlurs from "assets/home-bg-blurs.svg";
 import styles from "./page.module.scss";
@@ -9,6 +11,9 @@ export default function Search() {
   return (
     <section className={styles.section}>
       <SearchSection />
+      <Suspense fallback={null}>
+        <SearchResult />
+      </Suspense>
       <Image
         className={styles.bgBlurs}
         src={bgBlurs}

@@ -30,6 +30,14 @@ export async function GET(request: NextRequest) {
         prev_page: page > 1 ? page - 1 : null,
       },
     },
-    { status: 200 }
+    {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin":
+          "https://fullstack-dev-test.vercel.app, http://localhost:3000",
+        "Access-Control-Allow-Methods": "GET",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+    }
   );
 }

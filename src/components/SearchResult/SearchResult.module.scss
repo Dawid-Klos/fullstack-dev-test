@@ -1,0 +1,80 @@
+@import "styles/variables";
+
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem 1rem;
+
+  @include screen_md {
+    width: 30rem;
+    padding: 3rem 1rem;
+    gap: 2rem;
+  }
+
+  @include screen_lg {
+    width: 100%;
+    padding: 3rem;
+  }
+
+  @include screen_xl {
+    padding: 3rem;
+  }
+
+  .background {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.75rem;
+    background: rgba($primary-500, 0.12);
+    backdrop-filter: blur(16px);
+  }
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .title {
+    @include label-small;
+
+    color: rgba($primary-50, 0.5);
+
+    @include screen_md {
+      @include label-medium;
+
+      font-weight: 500;
+    }
+  }
+
+  .subtitle {
+    @include body-medium;
+
+    color: $primary-50;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(3.5rem, 1fr));
+  gap: 1rem;
+  width: 100%;
+
+  .number {
+    @include label-medium;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $primary-950;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+
+    color: $primary-50;
+  }
+}
