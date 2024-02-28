@@ -9,7 +9,6 @@ export const primeNumbersSchema = yup.object().shape({
     .number()
     .min(10, "Limit must be greater than 9")
     .max(100, "Limit must be less than 101"),
-  page: yup.number().min(1, "Page must be greater than 0"),
 });
 
 export type PrimeNumbers = yup.InferType<typeof primeNumbersSchema>;

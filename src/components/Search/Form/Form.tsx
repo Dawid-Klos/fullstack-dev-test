@@ -19,18 +19,17 @@ export const Form = () => {
     getValues,
     formState: { errors },
   } = useForm<PrimeNumbers>({
-    defaultValues: { limit: 10, page: 1 },
+    defaultValues: { limit: 10 },
     resolver: yupResolver(primeNumbersSchema),
   });
   const router = useRouter();
 
   const onSubmit: SubmitHandler<PrimeNumbers> = async (data) => {
-    const { value, limit, page } = data;
+    const { value, limit } = data;
 
     const params = new URLSearchParams({
       value: value.toString(),
       limit: limit?.toString() || "10",
-      page: page?.toString() || "1",
     });
 
     router.push(`/search?${params.toString()}`);
@@ -61,20 +60,6 @@ export const Form = () => {
           value={getValues("limit")}
           register={register}
           error={errors.limit?.message}
-        />
-      </div>
-
-      <div className={styles.inputWrapper}>
-        <Label
-          name="page"
-          description="specify the page to display (default - 1)"
-        />
-        <Input
-          name="page"
-          type="number"
-          value={getValues("page")}
-          register={register}
-          error={errors.page?.message}
         />
       </div>
 
