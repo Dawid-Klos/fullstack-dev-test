@@ -37,6 +37,12 @@
       @include screen_md {
         @include body-small;
       }
+
+      @include screen_xl {
+        @include body-medium;
+
+        font-weight: 600;
+      }
     }
   }
 }
