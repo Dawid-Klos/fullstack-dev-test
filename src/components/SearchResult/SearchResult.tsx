@@ -1,32 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePrimeNumbers } from "hooks/usePrimeNumbers";
+
+import Button from "components/ui/Button";
 
 import styles from "./SearchResult.module.scss";
 
 export const SearchResult = () => {
-  const [primeNumbers, setPrimeNumbers] = useState<number[]>([]);
-  const searchParams = useSearchParams();
+  const { primeNumbers, pagination, handleNext, handlePrevious } =
+    usePrimeNumbers();
 
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-
-    const fetchPrimeNumbers = async () => {
-      const response = await fetch(
-        `http://localhost:3000/api/prime-numbers?${params.toString()}`
-      );
-      const data = await response.json();
-
-      setPrimeNumbers(data.data);
-    };
-
-    if (params.get("value")) {
-      fetchPrimeNumbers();
-    }
-  }, [searchParams]);
-
-  if (!searchParams.get("value")) {
+  if (primeNumbers.length === 0) {
     return null;
   }
 
