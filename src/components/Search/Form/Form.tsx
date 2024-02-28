@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -21,6 +22,7 @@ export const Form = () => {
     defaultValues: { limit: 10, page: 1 },
     resolver: yupResolver(primeNumbersSchema),
   });
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<PrimeNumbers> = async (data) => {
     const { value, limit, page } = data;
@@ -31,19 +33,7 @@ export const Form = () => {
       page: page?.toString() || "1",
     });
 
-    try {
-      const res = await fetch(`/api/prime-numbers?${params.toString()}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const result = await res.json();
-      console.log(result);
-    } catch {
-      console.error("Error fetching data from the server");
-    }
+    router.push(`/search?${params.toString()}`);
   };
 
   return (
