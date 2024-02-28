@@ -2,15 +2,20 @@
 
 .section {
   position: relative;
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 3rem;
   padding: 2rem 1rem;
 
   @include screen_md {
+    width: 30rem;
     padding: 3rem 1rem;
     gap: 2rem;
+  }
+
+  @include screen_lg {
+    width: 100%;
+    padding: 3rem;
   }
 
   @include screen_xl {
