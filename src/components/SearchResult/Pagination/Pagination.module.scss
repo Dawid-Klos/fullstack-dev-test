@@ -1,0 +1,22 @@
+@import "styles/variables";
+
+.pagination {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+
+  .page {
+    @include label-small;
+
+    @include screen_md {
+      @include label-medium;
+    }
+  }
+
+  & button {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
