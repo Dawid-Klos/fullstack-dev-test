@@ -1,29 +1,39 @@
+import { Pagination as PaginationType } from "types";
+
 import Button from "components/ui/Button";
 
 import styles from "./Pagination.module.scss";
 
 type Props = {
-  current: number;
-  total: number;
+  pagination: PaginationType;
   handleNext: () => void;
   handlePrevious: () => void;
 };
 
 export const Pagination = ({
-  current,
-  total,
+  pagination,
   handleNext,
   handlePrevious,
 }: Props) => {
   return (
     <div className={styles.pagination}>
-      <Button type="button" onClick={handlePrevious}>
+      <Button
+        className={styles.button}
+        type="button"
+        onClick={handlePrevious}
+        disabled={!pagination.prev_page}
+      >
         Previous
       </Button>
       <p className={styles.page}>
-        {current} of {total}
+        {pagination.current_page} of {pagination.total_pages}
       </p>
-      <Button type="button" onClick={handleNext}>
+      <Button
+        className={styles.button}
+        type="button"
+        onClick={handleNext}
+        disabled={!pagination.next_page}
+      >
         Next
       </Button>
     </div>
