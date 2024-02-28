@@ -22,9 +22,7 @@ export const usePrimeNumbers = () => {
 
     const fetchPrimeNumbers = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:3000/api/prime-numbers?${params.toString()}`
-        );
+        const response = await fetch(`/api/prime-numbers?${params.toString()}`);
         const data = await response.json();
 
         setPrimeNumbers(data.data);
