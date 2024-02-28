@@ -34,3 +34,10 @@
     outline: 1px solid $primary-700;
   }
 }
+
+.error {
+  @include body-small;
+
+  color: #e63946;
+  margin-top: 0.5rem;
+}
