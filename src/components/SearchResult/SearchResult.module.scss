@@ -63,7 +63,16 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(3.5rem, 1fr));
   gap: 1rem;
+  row-gap: 2rem;
   width: 100%;
+
+  @include screen_lg {
+    grid-template-columns: repeat(10, 1fr);
+  }
+
+  @include screen_xl {
+    row-gap: 3rem;
+  }
 
   .number {
     @include label-medium;
