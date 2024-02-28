@@ -2,6 +2,8 @@
 
 import { usePrimeNumbers } from "hooks/usePrimeNumbers";
 
+import { Pagination } from "./Pagination";
+
 import styles from "./SearchResult.module.scss";
 
 export const SearchResult = () => {
@@ -30,6 +32,13 @@ export const SearchResult = () => {
           </p>
         ))}
       </div>
+
+      <Pagination
+        current={pagination.current_page}
+        total={pagination.total_pages}
+        handleNext={handleNext}
+        handlePrevious={handlePrevious}
+      />
     </section>
   );
 };
