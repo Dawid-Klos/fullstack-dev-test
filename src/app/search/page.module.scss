@@ -9,6 +9,15 @@
   flex: 1 1;
   gap: 2rem;
   padding: 2rem 1rem;
+
+  @include screen_lg {
+    padding: 1rem 4rem;
+    gap: 2rem;
+  }
+
+  @include screen_xl {
+    padding: 1rem 10rem;
+  }
 }
 
 .bgBlurs {
