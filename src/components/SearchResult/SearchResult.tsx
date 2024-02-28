@@ -34,8 +34,7 @@ export const SearchResult = () => {
       </div>
 
       <Pagination
-        current={pagination.current_page}
-        total={pagination.total_pages}
+        pagination={pagination}
         handleNext={handleNext}
         handlePrevious={handlePrevious}
       />
