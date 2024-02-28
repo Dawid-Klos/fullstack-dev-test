@@ -18,11 +18,32 @@ export const Form = () => {
     getValues,
     formState: { errors },
   } = useForm<PrimeNumbers>({
+    defaultValues: { limit: 10, page: 1 },
     resolver: yupResolver(primeNumbersSchema),
   });
 
-  const onSubmit: SubmitHandler<PrimeNumbers> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<PrimeNumbers> = async (data) => {
+    const { value, limit, page } = data;
+
+    const params = new URLSearchParams({
+      value: value.toString(),
+      limit: limit?.toString() || "10",
+      page: page?.toString() || "1",
+    });
+
+    try {
+      const res = await fetch(`/api/prime-numbers?${params.toString()}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const result = await res.json();
+      console.log(result);
+    } catch {
+      console.error("Error fetching data from the server");
+    }
   };
 
   return (
@@ -47,7 +68,6 @@ export const Form = () => {
         <Input
           name="limit"
           type="number"
-          placeholder="e.g. 20"
           value={getValues("limit")}
           register={register}
           error={errors.limit?.message}
@@ -62,7 +82,6 @@ export const Form = () => {
         <Input
           name="page"
           type="number"
-          placeholder="e.g. 5"
           value={getValues("page")}
           register={register}
           error={errors.page?.message}
