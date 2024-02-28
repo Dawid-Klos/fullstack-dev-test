@@ -15,7 +15,6 @@ export const Input = ({
   type = "text",
   name,
   placeholder,
-  value,
   register,
   error,
 }: Props) => {
@@ -25,7 +24,6 @@ export const Input = ({
         className={styles.input}
         id={name}
         type={type}
-        value={value}
         placeholder={placeholder}
         {...register(name)}
       />
