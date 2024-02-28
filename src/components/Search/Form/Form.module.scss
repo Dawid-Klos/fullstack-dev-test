@@ -1,0 +1,23 @@
+@import "styles/variables";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @include screen_lg {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+  }
+
+  .inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    @include screen_xl {
+      width: 100%;
+    }
+  }
+}

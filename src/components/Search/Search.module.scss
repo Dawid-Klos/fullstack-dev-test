@@ -8,7 +8,7 @@
   padding: 2rem 1rem;
 
   @include screen_md {
-    padding: 3rem 2rem;
+    padding: 3rem 1rem;
     gap: 2rem;
   }
 
@@ -54,26 +54,5 @@
     @include body-medium;
 
     color: $primary-50;
-  }
-}
-
-.bottomWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-
-  @include screen_lg {
-    flex-direction: row;
-    width: 100%;
-  }
-
-  .inputWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-
-    @include screen_xl {
-      width: 100%;
-    }
   }
 }
