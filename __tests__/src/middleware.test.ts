@@ -98,7 +98,7 @@ describe("validationMiddleware - test error messages", () => {
 
     const jsonResponse = await res.json();
 
-    expect(jsonResponse.error).toEqual("The smallest prime number is 2");
+    expect(jsonResponse.error).toEqual("The value must be greater than 2");
   });
 });
 

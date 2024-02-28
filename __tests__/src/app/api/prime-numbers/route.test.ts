@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 import {
   mockApiRequest,
   mockApiRequestWithPagination,
-} from "../../../__mocks__/mockApiRequest";
+} from "../../../../../__mocks__/mockApiRequest";
 
 import { GET } from "app/api/prime-numbers/route";
 

@@ -1,11 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-import {
-  isValidNumber,
-  isLimitInRange,
-  isPageInRange,
-} from "utils/inputValidator";
+import { isValidNumber, isNumberInRange } from "utils/inputValidator";
 import { countPrimeNumbersTo } from "utils/primeNumbers";
 
 export default function validationMiddleware(request: NextRequest) {
@@ -44,8 +40,9 @@ export default function validationMiddleware(request: NextRequest) {
   const totalPages = Math.ceil(countPrimeNumbersTo(x) / limit);
 
   const invalidRangeErrors = [
-    isLimitInRange(limit),
-    isPageInRange(page, totalPages),
+    isNumberInRange(limit, 1, 100, "limit"),
+    isNumberInRange(x, 2, Infinity, "value"),
+    isNumberInRange(page, 1, totalPages, "page"),
   ].filter(Boolean);
 
   if (invalidRangeErrors.length) {
