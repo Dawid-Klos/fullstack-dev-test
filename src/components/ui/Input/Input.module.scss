@@ -1,0 +1,32 @@
+@import "styles/variables";
+
+.input {
+  @include body-small;
+
+  background: transparent;
+  color: rgba($primary-50, 0.5);
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid $background-400;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s;
+
+  @include screen_lg {
+    @include body-medium;
+  }
+
+  &:hover {
+    border-color: $primary-700;
+    box-shadow: 0px 0px 20px rgba($primary-700, 0.05);
+  }
+
+  &:focus {
+    border: 1px solid $primary-700;
+    box-shadow: 0px 0px 20px rgba($primary-700, 0.1);
+  }
+
+  &:focus-visible {
+    outline: 1px solid $primary-700;
+  }
+}
