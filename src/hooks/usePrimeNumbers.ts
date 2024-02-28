@@ -1,14 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
-type Pagination = {
-  total_items: number;
-  limit: number;
-  total_pages: number;
-  current_page: number;
-  prev_page: number | null;
-  next_page: number | null;
-};
+import { Pagination } from "types";
 
 export const usePrimeNumbers = () => {
   const [primeNumbers, setPrimeNumbers] = useState<number[]>([]);
