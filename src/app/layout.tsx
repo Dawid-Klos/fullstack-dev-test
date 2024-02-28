@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Poppins } from "next/font/google";
 
 import Header from "components/Header";
+import Footer from "components/Footer";
 
 import "./globals.scss";
 
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body className={`${montserrat.variable} ${poppins.variable}`}>
         <Header />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
