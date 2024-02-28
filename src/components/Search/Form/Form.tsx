@@ -36,7 +36,11 @@ export const Form = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit(onSubmit)}
+      autoComplete="off"
+    >
       <div className={styles.inputWrapper}>
         <Label name="value" description="maximum prime number" />
         <Input
