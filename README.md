@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🧑🏻‍💻 Fullstack Developer Test
 
-## Getting Started
+This is a PrimeNumbersAPI project created for the Fullstack developer test.
 
-First, run the development server:
+
+## 📋 Table of Contents
+
+* [Tech Stack](#%EF%B8%8F-technology-stack)
+* [Running the project](#%EF%B8%8F-running-the-project)
+* [Live demo](#ℹ%EF%B8%8F-live-demo)
+* [Summary](#-summary)
+
+## 🛠️ Technology Stack
+
+The website is created by using the following stack:
+
+| Technology | Description                                | Link ↘️ |
+|------------|--------------------------------------------|--------|
+| Next.js    | The React Framework for the Web            | [Next.js](https://nextjs.org/) |
+| HTML5      | Hyper Text Markup Language                 | [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) |
+| SASS (SCSS)| Stylesheet language that’s compiled to CSS | [SASS](https://sass-lang.com/guide/) |
+| TypeScript | Strongly typed programming language that builds on JavaScript  | [TypeScript](https://developer.mozilla.org/en-US/docs/Web/javascript) |
+
+
+## 🖥️ Running the project
+
+1. Clone the project.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+git clone https://github.com/Dawid-Klos/fullstack-dev-test.git
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the project using a Docker container:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+docker compose up -d
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+3. You can access the website in the browser at [localhost:3000](http://localhost:3000)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## ℹ️ Live demo
 
-## Deploy on Vercel
+The project is available at [PrimeNumbersAPI URL](https://fullstack-dev-test.vercel.app/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📒 Summary
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+It was a great project to undertake and I have enjoyed every part of it.
+
+I would like to thank you for considering me for this role and for your time.
