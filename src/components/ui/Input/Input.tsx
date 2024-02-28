@@ -6,7 +6,6 @@ type Props = {
   type?: string;
   name: string;
   placeholder?: string;
-  value: number | undefined;
   register: UseFormRegister<any>;
   error?: string;
 };
