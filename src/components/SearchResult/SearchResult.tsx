@@ -1,12 +1,14 @@
 "use client";
 
 import { usePrimeNumbers } from "hooks/usePrimeNumbers";
+import { useKeepFocus } from "hooks/useKeepFocus";
 
 import { Pagination } from "./Pagination";
 
 import styles from "./SearchResult.module.scss";
 
 export const SearchResult = () => {
+  const ref = useKeepFocus();
   const { primeNumbers, pagination, handleNext, handlePrevious } =
     usePrimeNumbers();
 
@@ -15,7 +17,7 @@ export const SearchResult = () => {
   }
 
   return (
-    <section className={styles.section}>
+    <section className={styles.section} ref={ref}>
       <div className={styles.background}></div>
 
       <div className={styles.titleWrapper}>
