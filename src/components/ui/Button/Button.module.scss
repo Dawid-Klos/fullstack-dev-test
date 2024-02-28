@@ -3,6 +3,7 @@
 .button {
   @include label-small;
 
+  max-width: max-content;
   display: flex;
   justify-content: center;
   padding: 1rem 1.5rem;

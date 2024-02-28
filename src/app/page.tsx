@@ -21,7 +21,7 @@ export default function Home() {
         utilize pagination for seamless navigation through the results.
       </p>
 
-      <Link href="/">Get started now</Link>
+      <Link href="/search">Get started now</Link>
 
       <Image
         className={styles.bgBlurs}
