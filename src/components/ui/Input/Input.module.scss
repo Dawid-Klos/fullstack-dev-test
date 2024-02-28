@@ -3,14 +3,18 @@
 .input {
   @include body-small;
 
-  background: transparent;
-  color: rgba($primary-50, 0.5);
+  background-color: rgba(#18141f, 0.5);
+  color: $primary-50;
   width: 100%;
   padding: 1rem;
   border: 1px solid $background-400;
   border-radius: 6px;
   outline: none;
   transition: border-color 0.3s;
+
+  &::placeholder {
+    color: rgba($primary-50, 0.5);
+  }
 
   @include screen_lg {
     @include body-medium;
