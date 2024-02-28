@@ -2,8 +2,6 @@
 
 import { usePrimeNumbers } from "hooks/usePrimeNumbers";
 
-import Button from "components/ui/Button";
-
 import styles from "./SearchResult.module.scss";
 
 export const SearchResult = () => {
@@ -17,14 +15,20 @@ export const SearchResult = () => {
   return (
     <section className={styles.section}>
       <div className={styles.background}></div>
-      <h2 className={styles.title}>Search result:</h2>
+
+      <div className={styles.titleWrapper}>
+        <h2 className={styles.title}>Search result:</h2>
+        <p className={styles.subtitle}>
+          Found {pagination.total_items} prime numbers
+        </p>
+      </div>
+
       <div className={styles.container}>
-        {primeNumbers.length > 0 &&
-          primeNumbers.map((number) => (
-            <p key={number} className={styles.number}>
-              {number}
-            </p>
-          ))}
+        {primeNumbers.map((number) => (
+          <p key={number} className={styles.number}>
+            {number}
+          </p>
+        ))}
       </div>
     </section>
   );

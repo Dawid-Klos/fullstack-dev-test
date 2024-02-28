@@ -30,15 +30,27 @@
   }
 }
 
-.title {
-  @include body-medium;
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
-  color: $primary-50;
+  .title {
+    @include label-small;
 
-  @include screen_md {
-    @include label-medium;
+    color: rgba($primary-50, 0.5);
 
-    font-weight: 500;
+    @include screen_md {
+      @include label-medium;
+
+      font-weight: 500;
+    }
+  }
+
+  .subtitle {
+    @include body-medium;
+
+    color: $primary-50;
   }
 }
 
